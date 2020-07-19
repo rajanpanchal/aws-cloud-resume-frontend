@@ -33,7 +33,7 @@ jobs:
         ls
     - name: Uploading files to S3
       run: |
-          echo "hello"
+          aws s3 sync . s3://rajanpanchal.net --acl public-read
      # Runs a set of commands using the runners shell
     - name: Getting modified files
       uses: jitterbit/get-changed-files@v1 
@@ -47,6 +47,6 @@ jobs:
           for file in "${modified_files[@]}"; do
           if [ "${file}" != ".github/workflows/frontend.yml" ]; then
             echo "Uploading file: ${file}."
-            # aws cloudfront create-invalidation --distribution-id E120QUMB7Q2UYCK --paths "/$file"
+            aws cloudfront create-invalidation --distribution-id E120QUMB7Q2UYCK --paths "/$file"
           fi
           done
