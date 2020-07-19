@@ -47,6 +47,6 @@ jobs:
           for file in "${modified_files[@]}"; do
           if [ "${file}" != ".github/workflows/frontend.yml" ]; then
             echo "Uploading file: ${file}."
-            aws cloudfront create-invalidation --distribution-id E120QUMB7Q2UYCK --paths "/$file"
+            aws cloudfront create-invalidation --distribution-id E120QUMB7Q2UYC --paths "/$file"
           fi
           done
